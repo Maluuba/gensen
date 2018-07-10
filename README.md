@@ -76,7 +76,7 @@ reps_h, reps_h_t = gensen.get_representation(
 1) `reps_h` (batch_size x seq_len x 4096) contains the hidden states for all words in all sentences (padded to the max length of sentences)
 2) `reps_h_t` (batch_size x 4096) contains only the last hidden state for all sentences in the minibatch 
 
-The model will a fixed-length vector for each sentence as well as the hidden states corresponding to each word in every sentence (padded to max sentence length). You can also return a numpy array instead of a `torch.FloatTensor` by setting `return_numpy=True`. 
+The model will produce a fixed-length vector for each sentence as well as the hidden states corresponding to each word in every sentence (padded to max sentence length). You can also return a numpy array instead of a `torch.FloatTensor` by setting `return_numpy=True`. 
 
 ##### Vocabulary Expansion
 
@@ -94,7 +94,7 @@ bash get_data.sh
 
 Note that this script can take a while to complete since it downloads, tokenizes and lowercases a fairly large En-Fr corpus. If you already have these parallel corpora processed, you can replace the paths to these files in the provided `example_config.json` 
 
-Some of the data used in our work is no longer publicly available (BookCorpus - see http://yknzhu.wixsite.com/mbweb) or have an LDC license associated with the them (Penn Treebank). If you already have these datasets, you can and the skipthought paths in `example_config.json`. Remember to call these as `skipthought_next` and `skipthought_previous` for the train script to sum their corresponding losses instead of treating next and previous as separate tasks.
+Some of the data used in our work is no longer publicly available (BookCorpus - see http://yknzhu.wixsite.com/mbweb) or has an LDC license associated (Penn Treebank). As a result, the `example_config.json` script will only train on Multilingual NMT and NLI, since they are publicly available. To use models trained on all tasks, please use our available pre-trained models.
 
 Additional Sequence-to-Sequence transduction tasks can be added trivally to the multi-task framework by editing the json config file with more tasks.
 
@@ -108,7 +108,7 @@ Note that if "load_dir" is set to auto, the script will resume from the last sav
 
 ##### Creating a GenSen model from a trained multi-task model
 
-Once you have a trained model, we can throw away all of the decoders and just retain the encoder used to compute sentence representations to save disk space.
+Once you have a trained model, we can throw away all of the decoders and just retain the encoder used to compute sentence representations.
 
 You can do this by running
 
@@ -138,14 +138,11 @@ We used the [SentEval](https://github.com/facebookresearch/SentEval) toolkit to 
 
 ### Reference
 
-If this repository was useful to you, please consider citing our work.
-
-```@inproceedings{
-subramanian2018learning,
-title={Learning General Purpose Distributed Sentence Representations via Large Scale Multi-task Learning},
-author={Sandeep Subramanian and Adam Trischler and Yoshua Bengio and Christopher J Pal},
-booktitle={International Conference on Learning Representations},
-year={2018},
-url={https://openreview.net/forum?id=B18WgG-CZ},
+```
+@article{subramanian2018learning,
+title={Learning general purpose distributed sentence representations via large scale multi-task learning},
+author={Subramanian, Sandeep and Trischler, Adam and Bengio, Yoshua and Pal, Christopher J},
+journal={arXiv preprint arXiv:1804.00079},
+year={2018}
 }
 ```
