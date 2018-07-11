@@ -114,12 +114,12 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    print '#############################'
-    print '####### Parameters ##########'
-    print 'Prefix 1 : %s ' % (args.prefix_1)
-    print 'Prefix 2 : %s ' % (args.prefix_2)
-    print 'Pretrained Embeddings : %s ' % (args.pretrain)
-    print '#############################'
+    print('#############################')
+    print('####### Parameters ##########')
+    print('Prefix 1 : %s ' % (args.prefix_1))
+    print('Prefix 2 : %s ' % (args.prefix_2))
+    print('Pretrained Embeddings : %s ' % (args.pretrain))
+    print('#############################')
 
     gensen_1 = GenSenSingle(
         model_folder=args.folder_path,
@@ -138,23 +138,23 @@ if __name__ == "__main__":
     se = senteval.engine.SE(params_senteval, batcher, prepare)
     results_transfer = se.eval(transfer_tasks)
 
-    print '--------------------------------------------'
-    print 'Table 2 of Our Paper : '
-    print '--------------------------------------------'
-    print 'MR                [Dev:%.1f/Test:%.1f]' % (results_transfer['MR']['devacc'], results_transfer['MR']['acc'])
-    print 'CR                [Dev:%.1f/Test:%.1f]' % (results_transfer['CR']['devacc'], results_transfer['CR']['acc'])
-    print 'SUBJ              [Dev:%.1f/Test:%.1f]' % (results_transfer['SUBJ']['devacc'], results_transfer['SUBJ']['acc'])
-    print 'MPQA              [Dev:%.1f/Test:%.1f]' % (results_transfer['MPQA']['devacc'], results_transfer['MPQA']['acc'])
-    print 'SST2              [Dev:%.1f/Test:%.1f]' % (results_transfer['SST2']['devacc'], results_transfer['SST2']['acc'])
-    print 'SST5              [Dev:%.1f/Test:%.1f]' % (results_transfer['SST5']['devacc'], results_transfer['SST5']['acc'])
-    print 'TREC              [Dev:%.1f/Test:%.1f]' % (results_transfer['TREC']['devacc'], results_transfer['TREC']['acc'])
-    print 'MRPC              [Dev:%.1f/TestAcc:%.1f/TestF1:%.1f]' % (results_transfer['MRPC']['devacc'], results_transfer['MRPC']['acc'], results_transfer['MRPC']['f1'])
-    print 'SICKRelatedness   [Dev:%.3f/Test:%.3f]' % (results_transfer['SICKRelatedness']['devpearson'], results_transfer['SICKRelatedness']['pearson'])
-    print 'SICKEntailment    [Dev:%.1f/Test:%.1f]' % (results_transfer['SICKEntailment']['devacc'], results_transfer['SICKEntailment']['acc'])
-    print 'STS12             [Pearson:%.3f/Spearman:%.3f]' % (results_transfer['STS12']['all']['pearson']['mean'], results_transfer['STS12']['all']['spearman']['mean'])
-    print 'STS13             [Pearson:%.3f/Spearman:%.3f]' % (results_transfer['STS13']['all']['pearson']['mean'], results_transfer['STS13']['all']['spearman']['mean'])
-    print 'STS14             [Pearson:%.3f/Spearman:%.3f]' % (results_transfer['STS14']['all']['pearson']['mean'], results_transfer['STS14']['all']['spearman']['mean'])
-    print 'STS15             [Pearson:%.3f/Spearman:%.3f]' % (results_transfer['STS15']['all']['pearson']['mean'], results_transfer['STS15']['all']['spearman']['mean'])
-    print 'STS16             [Pearson:%.3f/Spearman:%.3f]' % (results_transfer['STS16']['all']['pearson']['mean'], results_transfer['STS16']['all']['spearman']['mean'])
-    print 'STSBenchmark      [Dev:%.5f/Pearson:%.5f/Spearman:%.5f]' % (results_transfer['STSBenchmark']['devpearson'], results_transfer['STSBenchmark']['pearson'], results_transfer['STSBenchmark']['spearman'])
-    print '--------------------------------------------'
+    print('--------------------------------------------')
+    print('Table 2 of Our Paper : ')
+    print('--------------------------------------------')
+    print('MR                [Dev:%.1f/Test:%.1f]' % (results_transfer['MR']['devacc'], results_transfer['MR']['acc']))
+    print('CR                [Dev:%.1f/Test:%.1f]' % (results_transfer['CR']['devacc'], results_transfer['CR']['acc']))
+    print('SUBJ              [Dev:%.1f/Test:%.1f]' % (results_transfer['SUBJ']['devacc'], results_transfer['SUBJ']['acc']))
+    print('MPQA              [Dev:%.1f/Test:%.1f]' % (results_transfer['MPQA']['devacc'], results_transfer['MPQA']['acc']))
+    print('SST2              [Dev:%.1f/Test:%.1f]' % (results_transfer['SST2']['devacc'], results_transfer['SST2']['acc']))
+    print('SST5              [Dev:%.1f/Test:%.1f]' % (results_transfer['SST5']['devacc'], results_transfer['SST5']['acc']))
+    print('TREC              [Dev:%.1f/Test:%.1f]' % (results_transfer['TREC']['devacc'], results_transfer['TREC']['acc']))
+    print('MRPC              [Dev:%.1f/TestAcc:%.1f/TestF1:%.1f]' % (results_transfer['MRPC']['devacc'], results_transfer['MRPC']['acc'], results_transfer['MRPC']['f1']))
+    print('SICKRelatedness   [Dev:%.3f/Test:%.3f]' % (results_transfer['SICKRelatedness']['devpearson'], results_transfer['SICKRelatedness']['pearson']))
+    print('SICKEntailment    [Dev:%.1f/Test:%.1f]' % (results_transfer['SICKEntailment']['devacc'], results_transfer['SICKEntailment']['acc']))
+    print('STS12             [Pearson:%.3f/Spearman:%.3f]' % (results_transfer['STS12']['all']['pearson']['mean'], results_transfer['STS12']['all']['spearman']['mean']))
+    print('STS13             [Pearson:%.3f/Spearman:%.3f]' % (results_transfer['STS13']['all']['pearson']['mean'], results_transfer['STS13']['all']['spearman']['mean']))
+    print('STS14             [Pearson:%.3f/Spearman:%.3f]' % (results_transfer['STS14']['all']['pearson']['mean'], results_transfer['STS14']['all']['spearman']['mean']))
+    print('STS15             [Pearson:%.3f/Spearman:%.3f]' % (results_transfer['STS15']['all']['pearson']['mean'], results_transfer['STS15']['all']['spearman']['mean']))
+    print('STS16             [Pearson:%.3f/Spearman:%.3f]' % (results_transfer['STS16']['all']['pearson']['mean'], results_transfer['STS16']['all']['spearman']['mean']))
+    print('STSBenchmark      [Dev:%.5f/Pearson:%.5f/Spearman:%.5f]' % (results_transfer['STSBenchmark']['devpearson'], results_transfer['STSBenchmark']['pearson'], results_transfer['STSBenchmark']['spearman']))
+    print('--------------------------------------------')
