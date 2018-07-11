@@ -1,4 +1,5 @@
 """GenSen Encoder"""
+from __future__ import print_function
 import h5py
 from sklearn.linear_model import LinearRegression
 import nltk
@@ -186,7 +187,7 @@ class GenSenSingle(nn.Module):
     def first_expansion(self):
         """Traing linear regression model for the first time."""
         # Read pre-trained word embedding h5 file
-        print 'Loading pretrained word embeddings'
+        print('Loading pretrained word embeddings')
         pretrained_embeddings = h5py.File(self.pretrained_emb)
         pretrained_embedding_matrix = pretrained_embeddings['embedding'].value
         pretrain_vocab = \
@@ -208,7 +209,7 @@ class GenSenSingle(nn.Module):
                     pretrained_embedding_matrix[pretrain_word2id[word]]
                 )
 
-        print 'Training vocab expansion on model'
+        print('Training vocab expansion on model')
         lreg = LinearRegression()
         lreg.fit(pretrain_train, model_train)
         self.lreg = lreg
@@ -263,8 +264,8 @@ class GenSenSingle(nn.Module):
                     self.model_embedding_matrix[self.word2id['<unk>']]
                 )
 
-        print 'Found %d task OOVs ' % (oov_task)
-        print 'Found %d pretrain OOVs ' % (oov_pretrain)
+        print('Found %d task OOVs ' % (oov_task))
+        print('Found %d pretrain OOVs ' % (oov_pretrain))
         task_embeddings = np.stack(task_embeddings)
         self.encoder.set_pretrained_embeddings(task_embeddings)
         self.vocab_expanded = True
@@ -356,7 +357,7 @@ if __name__ == '__main__':
     )
     # reps_h contains the hidden states for all words in all sentences (padded to the max length of sentences) (batch_size x seq_len x 2048)
     # reps_h_t contains only the last hidden state for all sentences in the minibatch (batch_size x 2048)
-    print reps_h.shape, reps_h_t.shape
+    print(reps_h.shape, reps_h_t.shape)
 
     gensen_2 = GenSenSingle(
         model_folder='./data/models',
@@ -369,4 +370,4 @@ if __name__ == '__main__':
     )
     # reps_h contains the hidden states for all words in all sentences (padded to the max length of sentences) (batch_size x seq_len x 2048)
     # reps_h_t contains only the last hidden state for all sentences in the minibatch (batch_size x 4096)
-    print reps_h.shape, reps_h_t.shape
+    print(reps_h.shape, reps_h_t.shape)
